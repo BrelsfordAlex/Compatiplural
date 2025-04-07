@@ -53,7 +53,7 @@ initiateWorkerPool = () => {
 // Socket
 openWebSocket = () => {
     const WebSocketClient = require('./WebsocketClient')
-    const wss = new WebSocketServer.Server({ port: 8080 })
+    const wss = new WebSocketServer.Server(Config.token)
     let initialPacket = { "op": "authenticate", "token": Config.token }
     wss.onOpen = (_) => { wss.send(JSON.stringify(initialPacket)); }
     wss.onClose = (e) => { console.log('SimplyWS/onClose :: %s', e); e = '' }
